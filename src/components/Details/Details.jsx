@@ -4,7 +4,17 @@ import { useHistory } from 'react-router-dom';
 
 const Details = () => {
     const selectedMovie = useSelector(store => store.selectedMovie);
+    const genres = useSelector(store => store.genres);
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     const movieId = selectedMovie.id;
+    //     dispatch({
+    //         type: 'FETCH_GENRES', 
+    //         payload: movieId
+    //     });
+    // })
 
     return (
         <div>
@@ -14,6 +24,13 @@ const Details = () => {
                     src={selectedMovie.poster} 
                     alt={selectedMovie.title}
                 />
+                {genres.map(genre => {
+                    return (
+                        <div>
+                            <h3>{genre.genres}</h3>
+                        </div>
+                    );
+                })}
                 <br />
                 <br />
                 <section className="about-header"><b>About this movie:</b></section>
