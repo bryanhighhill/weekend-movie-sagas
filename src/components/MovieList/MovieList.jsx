@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 function MovieList() {
 
     const dispatch = useDispatch();
-    const movies = useSelector(store => store.movies);
+    const movies = useSelector(store => store.movies);        
     const history = useHistory();
 
     useEffect(() => {
@@ -16,7 +16,15 @@ function MovieList() {
     const clickHandler = (movie) => {
         return (
             console.log('selected movie: ', movie),
-            dispatch({type: 'SET_SELECTED_MOVIE', payload: movie}),
+            dispatch({
+                type: 'SET_SELECTED_MOVIE', 
+                payload: movie
+            }),
+            dispatch({
+                type: 'FETCH_GENRES',
+                payload: movie.id
+            }),
+            console.log('movie id in click handler: ', movie.id),
             history.push('/details')
         )
     }
