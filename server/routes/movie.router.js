@@ -13,7 +13,20 @@ router.get('/', (req, res) => {
       console.log('ERROR: Get all movies', err);
       res.sendStatus(500)
     })
+});
 
+router.get('/:id', (req, res) => {
+  console.log('in fetch movie get request with id: ', req.params.id);
+  const id = req.params.id;
+  const query = `SELECT * FROM "movies" WHERE "id" = $1`;
+  pool.query(query, [req.params.id])
+    .then( result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get all movies', err);
+      res.sendStatus(500)
+    })
 });
 
 router.post('/', (req, res) => {

@@ -7,34 +7,40 @@ const Details = () => {
     const genres = useSelector(store => store.genres);
     const history = useHistory();
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     const movieId = selectedMovie.id;
-    //     dispatch({
-    //         type: 'FETCH_GENRES', 
-    //         payload: movieId
-    //     });
-    // })
+    console.log('selectedMovie on details page: ', selectedMovie);
+    console.log('selectedMovie.title: ', selectedMovie.title);
 
     return (
         <div>
             <main>
-                <h1 className="movie-title">{selectedMovie.title}</h1>
-                <img 
-                    src={selectedMovie.poster} 
-                    alt={selectedMovie.title}
-                />
+                {selectedMovie.map(movie => {
+                    return(
+                        <div className="movie-title-poster">
+                            <h1 className="movie-title">{movie.title}</h1>
+                            <img 
+                                src={movie.poster} 
+                                alt={movie.title}
+                            />
+                        </div>
+                    )
+                })}
                 {genres.map(genre => {
                     return (
-                        <div>
+                        <div className="movie-genres">
                             <h3>{genre.genres}</h3>
                         </div>
                     );
                 })}
                 <br />
                 <br />
-                <section className="about-header"><b>About this movie:</b></section>
-                <section className="movie-description">{selectedMovie.description}</section>
+                {selectedMovie.map(movie => {
+                    return(
+                        <div className="movie-description">
+                            <section className="about-header"><b>About this movie:</b></section>
+                            <section className="movie-description">{movie.description}</section>
+                        </div>
+                    )
+                })}
             </main>
             <br />
             <br />

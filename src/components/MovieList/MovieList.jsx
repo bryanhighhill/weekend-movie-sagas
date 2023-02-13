@@ -17,8 +17,8 @@ function MovieList() {
         return (
             console.log('selected movie: ', movie),
             dispatch({
-                type: 'SET_SELECTED_MOVIE', 
-                payload: movie
+                type: 'FETCH_MOVIE_DATA', 
+                payload: movie.id
             }),
             dispatch({
                 type: 'FETCH_GENRES',
