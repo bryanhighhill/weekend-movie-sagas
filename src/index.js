@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
+    yield takeEvery('FETCH_MOVIE_DATA', fetchMovieData);
 }
 
 function* fetchAllMovies() {
@@ -26,6 +27,17 @@ function* fetchAllMovies() {
 
     } catch {
         console.log('get all error');
+    }
+}
+
+function* fetchMovieData(action) {
+    const id = action.payload;
+    console.log('in * fetchMovieData with id: ', action.payload);
+    try {
+        const selectedMovieData = yield axios.get(`/api/movie/${id}`);
+        yield put({type: 'SET_SELECTED_MOVIE', payload: selectedMovieData.data});
+    } catch {
+        console.log('error with fetch selected movie data');
     }
 }
 
@@ -65,7 +77,7 @@ const genres = (state = [], action) => {
 }
 
 //used to store clicked on movie data
-const selectedMovie = (state = {}, action) => {
+const selectedMovie = (state = [], action) => {
     switch (action.type) {
         case 'SET_SELECTED_MOVIE':
 
