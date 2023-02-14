@@ -1,14 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 const Details = () => {
+    const { id } = useParams();
     const selectedMovie = useSelector(store => store.selectedMovie);
     const genres = useSelector(store => store.genres);
     const history = useHistory();
     const dispatch = useDispatch();
     console.log('selectedMovie on details page: ', selectedMovie);
     console.log('selectedMovie.title: ', selectedMovie.title);
+
+    useEffect(()=> {
+        dispatch({
+            type: 'FETCH_MOVIE_DATA', 
+            payload: id
+        });
+        dispatch({
+            type: 'FETCH_GENRES',
+            payload: id
+        })
+    }, [id]);
 
     return (
         <div>
