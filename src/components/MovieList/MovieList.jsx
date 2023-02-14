@@ -23,7 +23,8 @@ function MovieList() {
     return (
         <main>
             <Carousel movies={movies}/>
-            <h1>MovieList</h1>
+            <h2>Movie Selector</h2>
+            {/* <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
@@ -37,7 +38,7 @@ function MovieList() {
                         </div>
                     );
                 })}
-            </section>
+            </section> */}
         </main>
 
     );
