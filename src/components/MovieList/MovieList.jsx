@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css';
 import { useHistory } from 'react-router-dom';
+import Carousel from '../Carousel/Carousel';
 
 function MovieList() {
 
@@ -14,23 +15,14 @@ function MovieList() {
     }, []);
 
     const clickHandler = (movie) => {
-        return (
-            console.log('selected movie: ', movie),
-            dispatch({
-                type: 'FETCH_MOVIE_DATA', 
-                payload: movie.id
-            }),
-            dispatch({
-                type: 'FETCH_GENRES',
-                payload: movie.id
-            }),
-            console.log('movie id in click handler: ', movie.id),
-            history.push('/details')
-        )
+            console.log('selected movie: ', movie);
+            console.log('movie id in click handler: ', movie.id);
+            history.push(`/details/${movie.id}`);
     }
 
     return (
         <main>
+            <Carousel movies={movies}/>
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
