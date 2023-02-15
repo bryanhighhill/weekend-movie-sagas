@@ -31,16 +31,19 @@ body {
 .movie-container {
   border-radius: 25px;
   width: 80%;
+  margin: auto; 
 }
 
 .prev-container {
   border-radius: 25px;
   width: 80%;
+  margin: auto;
 }
 
 .next-container {
   border-radius: 25px;
   width: 80%;
+  margin: auto;
 }
 
 .next-button {
