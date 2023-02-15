@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.movie-header {
+  color: white;
+}
 
 .App-header {
   background-color: #222;

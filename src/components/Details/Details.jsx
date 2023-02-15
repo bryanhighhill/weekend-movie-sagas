@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import './Details.css';
 
 const Details = () => {
     const { id } = useParams();
@@ -23,41 +24,47 @@ const Details = () => {
     }, [id]);
 
     return (
-        <div>
-            <main>
+        <>
+            <div>
                 {selectedMovie.map(movie => {
                     return(
-                        <div className="movie-title-poster">
-                            <h1 className="movie-title">{movie.title}</h1>
-                            <img 
-                                src={movie.poster} 
-                                alt={movie.title}
-                            />
+                        <div className="movie-info-container">
+                            <div className="movie-title-poster">
+                                {/* <h1 className="movie-title">{movie.title}</h1> */}
+                                <img 
+                                    src={movie.poster} 
+                                    alt={movie.title}
+                                    height="500px"
+                                />
+                            </div>
+                            <div>
+                                <div className="movie-description">
+                                    <h1 className="movie-title">{movie.title}</h1>
+                                    <section className="about-header"><b>About this movie:</b></section>
+                                    <section className="movie-description">{movie.description}</section>
+                                </div>
+                                <br />
+                                <br />
+                                <div className="genres-container">
+                                    <section className="genres-header"><b>Genres:</b></section>
+                                    {genres.map(genre => {
+                                        return (
+                                            <section className="movie-genres">
+                                                {genre.genres}
+                                            </section>
+                                        );
+                                    })}
+                                </div>
+
+                            </div>
                         </div>
                     )
                 })}
-                {genres.map(genre => {
-                    return (
-                        <div className="movie-genres">
-                            <h3>{genre.genres}</h3>
-                        </div>
-                    );
-                })}
-                <br />
-                <br />
-                {selectedMovie.map(movie => {
-                    return(
-                        <div className="movie-description">
-                            <section className="about-header"><b>About this movie:</b></section>
-                            <section className="movie-description">{movie.description}</section>
-                        </div>
-                    )
-                })}
-            </main>
+            </div>
             <br />
             <br />
-            <button className="home-button" onClick={() => {history.push('/')}}>Back to movie list</button>
-        </div>
+            <button className="home-button" onClick={() => {history.push('/')}}><span>Back to movie list</span></button>
+        </>
     )
 }
 

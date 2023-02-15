@@ -23,22 +23,6 @@ function MovieList() {
     return (
         <main>
             <Carousel movies={movies}/>
-            <h2>Movie Selector</h2>
-            {/* <h1>MovieList</h1>
-            <section className="movies">
-                {movies.map(movie => {
-                    return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img 
-                                src={movie.poster} 
-                                alt={movie.title}
-                                onClick={()=> {clickHandler(movie)}}
-                            />
-                        </div>
-                    );
-                })}
-            </section> */}
         </main>
 
     );

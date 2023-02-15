@@ -24,33 +24,41 @@ const Carousel = ({movies}) => {
     }
     return(
         <div className="carousel">
-            <div className="prev-div">
+            <div className="prev-container">
                 <button className="prev-button" onClick={() => setMovieIndex(previousIndex)}>
                     <img 
                         src={prevMovie.poster} 
                         alt={prevMovie.title}
                         className="prev-image"
-                        // onClick={() => setMovieIndex(previousIndex)}
                     />
                 </button>
-                {/* <div className = "overlay">
-                    <div className="prev-movie-title">{prevMovie.title}</div>
-                </div> */}
-            <h4>previous</h4>
+                <br />
+                <br />
+                <img
+                    src="images/prev-button-01.png"
+                    width= "150px"  
+                    onClick={() => setMovieIndex(previousIndex)}  
+                />
             </div>
 
-            <div className="movie-div">
-                <button className="movie-details-button" onClick={() => {clickHandler(movie)}}> 
+            <div className="movie-container">
+                <button className="movie-details-button" onClick={() => clickHandler(movie)}> 
                     <img 
                         src={movie.poster} 
                         alt={movie.title}
                         className="movie-image"
                     />
                 </button>
-                <h4>click movie for more info</h4>
+                <br />
+                <br />
+                <img
+                    src="images/more-info-button-01.png"
+                    width= "150px"  
+                    onClick={() => clickHandler(movie)}  
+                />
             </div>
 
-            <div className="next-div">
+            <div className="next-container">
                 <button className="next-button" onClick={() => setMovieIndex(nextIndex)}>
                     <img 
                         src={nextMovie.poster} 
@@ -58,7 +66,13 @@ const Carousel = ({movies}) => {
                         className="next-image"
                     />
                 </button>
-                <h4>next</h4>
+                <br />
+                <br />
+                <img
+                    src="images/next-button-01.png"
+                    width= "150px"  
+                    onClick={() => setMovieIndex(nextIndex)}  
+                />
             </div>
         </div>
     );

@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   console.log('in fetch movie get request with id: ', req.params.id);
   const id = req.params.id;
-  const query = `SELECT *,(SELECT ) FROM "movies" WHERE "id" = $1`;
+  const query = 'SELECT * FROM "movies" WHERE "id" = $1;';
   pool.query(query, [req.params.id])
     .then( result => {
       res.send(result.rows);
