@@ -7,17 +7,17 @@ function App() {
   return (
     <div className="App">
       <h1 className="movie-header">Movie Selector</h1>
+
+      {/* ROUTER PATH FOR HOME PAGE */}
       <Router>        
         <Route path="/" exact>
           <MovieList />
         </Route>
         
-        {/* Details page */}
+        {/* ROUTER PATH FOR MOVIE DETAILS PAGE */}
         <Route path="/details/:id">
           <Details />
         </Route>
-
-        {/* Add Movie page */}
       </Router>
     </div>
   );

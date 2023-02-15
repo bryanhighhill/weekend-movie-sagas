@@ -19,7 +19,7 @@ function* rootSaga() {
 }
 
 function* fetchAllMovies() {
-    // get all movies from the DB
+    // get all movies from db
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
@@ -30,6 +30,7 @@ function* fetchAllMovies() {
     }
 }
 
+//fetch selected movie data from db
 function* fetchMovieData(action) {
     const id = action.payload;
     console.log('in * fetchMovieData with id: ', action.payload);
@@ -41,8 +42,8 @@ function* fetchMovieData(action) {
     }
 }
 
+// get movie genres from db
 function* fetchGenres(action) {
-    // get movie genres from DB
     console.log(' in fetch genres with id: ', action.payload);
     const id = action.payload;
     try {

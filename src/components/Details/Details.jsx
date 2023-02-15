@@ -12,6 +12,7 @@ const Details = () => {
     console.log('selectedMovie on details page: ', selectedMovie);
     console.log('selectedMovie.title: ', selectedMovie.title);
 
+    // fire off fetch movie and fetch genres get requests on page load
     useEffect(()=> {
         dispatch({
             type: 'FETCH_MOVIE_DATA', 
@@ -26,11 +27,11 @@ const Details = () => {
     return (
         <>
             <div>
+                {/* map over selected movie to display movie data */}
                 {selectedMovie.map(movie => {
                     return(
                         <div className="movie-info-container">
                             <div className="movie-title-poster">
-                                {/* <h1 className="movie-title">{movie.title}</h1> */}
                                 <img 
                                     src={movie.poster} 
                                     alt={movie.title}
@@ -45,6 +46,8 @@ const Details = () => {
                                 </div>
                                 <br />
                                 <br />
+                                
+                                {/* map over genres to display genre data */}
                                 <div className="genres-container">
                                     <section className="genres-header"><b>Genres:</b></section>
                                     {genres.map(genre => {
