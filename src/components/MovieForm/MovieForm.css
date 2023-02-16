@@ -1,0 +1,27 @@
+.movie-form {
+    background-color: white;
+}
+
+.form-visible-button {
+    background-color: rgb(255, 227, 150);
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+}
+
+.form-visible-button:hover {
+    background-color: rgb(255, 206, 70);
+    transition: .5s;
+}
+
+.submit-movie-button {
+    background-color: rgb(196, 240, 159);
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+}
+
+.submit-movie-button:hover {
+    background-color: rgb(146, 254, 57);
+    transition: .5s;
+}
