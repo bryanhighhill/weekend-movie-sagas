@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './MovieForm.css';
 
 const MovieForm = () => {
@@ -9,6 +10,7 @@ const MovieForm = () => {
     const [genre, setGenre] = useState(0);
     const [formVisible, setFormVisible] = useState(false);
     const dispatch = useDispatch();
+    const history = useHistory();
     
     const isInvalid = (title, poster, description) => {
         if (title.length <= 0 && description.length <= 0 && poster.length <=0) {
@@ -59,6 +61,7 @@ const MovieForm = () => {
         setPoster('');  
         setDescription('');      
         }
+        history.push('/');
     }
 
     return (
@@ -69,6 +72,8 @@ const MovieForm = () => {
             >
                 Add Movie Form
             </button>
+            <br />
+            <br />
             {formVisible && <div className="movie-form">
                 <br />
                 {/* dispatch to POST function called here */}
@@ -129,13 +134,17 @@ const MovieForm = () => {
                             <option value="13">Superhero</option>
                         </select>
                         </label>
-
+                    <br />
+                    <br />
                     {/* add submit button here */}
                     <button 
                         type="submit"
                         className="submit-movie-button"
                     >
-                        Submit Movie</button>
+                        Submit Movie
+                    </button>
+                    <br />
+                    <br />
                 </form>
             </div>}
         </>
