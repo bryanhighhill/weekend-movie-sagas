@@ -16,10 +16,43 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('FETCH_MOVIE_DATA', fetchMovieData);
+    yield takeEvery('POST_MOVIE', postMovie);
+    // yield takeEvery('POST_GENRE', postGenre);
 }
 
+//POST new movie
+const postMovie = (action) => {
+    const title = action.payload.title;
+    const poster = action.payload.poster;
+    const description = action.payload.description;
+    const genre_id = Number(action.payload.genre_id);
+
+    axios({
+    
+        method: 'POST',
+        url: '/api/movie',
+        data: {
+            title,
+            poster,
+            description,
+            genre_id
+      }
+    })
+    .then((response) => {
+      console.log('response from postMovie: ', response);
+      fetchAllMovies();
+    })
+    .catch((error) => {
+      console.log('error with postMovie: ', error);
+    })
+  }
+
+  //POST genre
+
+
+
+// get all movies from db
 function* fetchAllMovies() {
-    // get all movies from db
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);

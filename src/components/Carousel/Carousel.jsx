@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Carousel.css';
+import MovieForm from '../MovieForm/MovieForm';
 
 const Carousel = ({movies}) => {
 
@@ -28,62 +29,65 @@ const Carousel = ({movies}) => {
     }
 
     return(
-        <div className="carousel">
+        <>
+            <MovieForm />
+            <div className="carousel">
 
-            {/* Previous movie carousel feature */}
-            <div className="prev-container">
-                <button className="prev-button" onClick={() => setMovieIndex(previousIndex)}>
-                    <img 
-                        src={prevMovie.poster} 
-                        alt={prevMovie.title}
-                        className="prev-image"
+                {/* Previous movie carousel feature */}
+                <div className="prev-container">
+                    <button className="prev-button" onClick={() => setMovieIndex(previousIndex)}>
+                        <img 
+                            src={prevMovie.poster} 
+                            alt={prevMovie.title}
+                            className="prev-image"
+                        />
+                    </button>
+                    <br />
+                    <br />
+                    <img
+                        src="images/prev-button-01.png"
+                        width= "150px"  
+                        onClick={() => setMovieIndex(previousIndex)}  
                     />
-                </button>
-                <br />
-                <br />
-                <img
-                    src="images/prev-button-01.png"
-                    width= "150px"  
-                    onClick={() => setMovieIndex(previousIndex)}  
-                />
-            </div>
+                </div>
 
-            {/* selected movie carousel feature */}
-            <div className="movie-container">
-                <button className="movie-details-button" onClick={() => clickHandler(movie)}> 
-                    <img 
-                        src={movie.poster} 
-                        alt={movie.title}
-                        className="movie-image"
+                {/* selected movie carousel feature */}
+                <div className="movie-container">
+                    <button className="movie-details-button" onClick={() => clickHandler(movie)}> 
+                        <img 
+                            src={movie.poster} 
+                            alt={movie.title}
+                            className="movie-image"
+                        />
+                    </button>
+                    <br />
+                    <br />
+                    <img
+                        src="images/more-info-button-01.png"
+                        width= "150px"  
+                        onClick={() => clickHandler(movie)}  
                     />
-                </button>
-                <br />
-                <br />
-                <img
-                    src="images/more-info-button-01.png"
-                    width= "150px"  
-                    onClick={() => clickHandler(movie)}  
-                />
-            </div>
+                </div>
 
-            {/* next movie carousel feature */}
-            <div className="next-container">
-                <button className="next-button" onClick={() => setMovieIndex(nextIndex)}>
-                    <img 
-                        src={nextMovie.poster} 
-                        alt={nextMovie.title}
-                        className="next-image"
+                {/* next movie carousel feature */}
+                <div className="next-container">
+                    <button className="next-button" onClick={() => setMovieIndex(nextIndex)}>
+                        <img 
+                            src={nextMovie.poster} 
+                            alt={nextMovie.title}
+                            className="next-image"
+                        />
+                    </button>
+                    <br />
+                    <br />
+                    <img
+                        src="images/next-button-01.png"
+                        width= "150px"  
+                        onClick={() => setMovieIndex(nextIndex)}  
                     />
-                </button>
-                <br />
-                <br />
-                <img
-                    src="images/next-button-01.png"
-                    width= "150px"  
-                    onClick={() => setMovieIndex(nextIndex)}  
-                />
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
