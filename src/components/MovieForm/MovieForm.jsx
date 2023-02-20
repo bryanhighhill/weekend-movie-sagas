@@ -136,12 +136,20 @@ const MovieForm = () => {
                         </label>
                     <br />
                     <br />
-                    {/* add submit button here */}
+                    {/* add cancel movie button here */}
+                    <button 
+                        className="cancel-movie-button"
+                        onClick={() => {setFormVisible(!formVisible)}}
+                    >
+                        Cancel
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {/* add save movie button here */}
                     <button 
                         type="submit"
                         className="submit-movie-button"
                     >
-                        Submit Movie
+                        Save Movie
                     </button>
                     <br />
                     <br />
