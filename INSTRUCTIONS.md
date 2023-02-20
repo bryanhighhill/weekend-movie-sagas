@@ -108,20 +108,20 @@ Add to the detail page an edit button that brings the user to the edit page.
 
 This new page should show:
 
-- an input field (for changing the movie title), for the selected movie.
-- a textarea (for changing the movie description)
+[x] - an input field (for changing the movie title), for the selected movie.
+[x] - a textarea (for changing the movie description)
 
 The edit page should have the buttons:
 
-- `Cancel` button, which should bring the user to the Details Page
-- `Save` button, which should update the title and description in the database and bring the user to the Details Page
+[x] - `Cancel` button, which should bring the user to the Details Page
+[x] - `Save` button, which should update the title and description in the database and bring the user to the Details Page
 
 ### Other Ideas
 
-- [ ] Display the current values in the input (title) and textarea (description) on the Edit Page
+- [x] Display the current values in the input (title) and textarea (description) on the Edit Page
 - [ ] Display all genres on movie list page. Research JSON_AGG to make this possible.
 - [ ] Move sagas and reducers out of your `index.js` and into separate files (ideally in `src/redux/reducers` and `src/redux/sagas` folders).
-- [ ] Allow the user to refresh the details or edit page. The url for the details page would be something like `/details/1` for movie with id of `1`. Research [react router params](https://reacttraining.com/react-router/web/example/url-params).
+- [x] Allow the user to refresh the details or edit page. The url for the details page would be something like `/details/1` for movie with id of `1`. Research [react router params](https://reacttraining.com/react-router/web/example/url-params).
 - [ ] Allow the user to add a genre to a movie.
 - [ ] Allow the user to remove a genre from a movie.
 - [ ] Only display the top 10 movies, and allow the user to search for movie titles with a search bar on the home page (you can do this on the client side or the server side, server side is a bigger stretch, but good practice).

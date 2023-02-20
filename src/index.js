@@ -11,13 +11,38 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-// Create the rootSaga generator function
+// Create the rootSaga generator functions
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('FETCH_MOVIE_DATA', fetchMovieData);
     yield takeEvery('POST_MOVIE', postMovie);
-    // yield takeEvery('POST_GENRE', postGenre);
+    yield takeEvery('UPDATE_MOVIE', updateMovie);
+}
+
+//PUT movie - update movie title and/or description
+const updateMovie = (action) => {
+    const title = action.payload.title;
+    const description = action.payload.description;
+    const id = action.payload.id;
+    console.log(`in PUT with - title: ${title}, description: ${description}, id: ${id}`);
+
+    axios({
+        method: 'PUT',
+        url: '/api/movie',
+        data: {
+            title,
+            description,
+            id
+        }
+    })
+    .then((response) => {
+        console.log('response from updateMovie: ', response);
+        fetchAllMovies();
+    })
+    .catch((error) => {
+        console.log('error with updateMovie: ', error);
+    })
 }
 
 //POST new movie
@@ -28,7 +53,6 @@ const postMovie = (action) => {
     const genre_id = Number(action.payload.genre_id);
 
     axios({
-    
         method: 'POST',
         url: '/api/movie',
         data: {
@@ -40,7 +64,6 @@ const postMovie = (action) => {
     })
     .then((response) => {
       console.log('response from postMovie: ', response);
-      fetchAllMovies();
     })
     .catch((error) => {
       console.log('error with postMovie: ', error);
