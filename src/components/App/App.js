@@ -19,6 +19,12 @@ function App() {
           <Details />
         </Route>
       </Router>
+
+      {/* ROUTER PATH FOR EDIT MOVIE PAGE */}
+      <Route path="/edit/:id">
+          <EditMovie />
+        </Route>
+      </Router>
     </div>
   );
 }

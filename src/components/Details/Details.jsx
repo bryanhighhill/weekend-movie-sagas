@@ -24,6 +24,10 @@ const Details = () => {
         })
     }, [id]);
 
+    const clickHandler = (movie) => {
+        history.push(`/edit/${movie.id}`)
+    }
+
     return (
         <>
             <div>
@@ -58,6 +62,14 @@ const Details = () => {
                                         );
                                     })}
                                 </div>
+                                <br />
+                                <br />
+                                <button
+                                    className="edit-movie-button"
+                                    onClick={() => history.push(`/edit/${movie.id}`)}
+                                >
+                                    Edit movie
+                                </button>
 
                             </div>
                         </div>

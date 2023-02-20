@@ -89,8 +89,8 @@ This should show:
 
 The Add Movie page should have the buttons:
 
-- `Cancel` button, which should bring the user to the Home/List Page
-- `Save` button, which should save these inputs in the database and bring the user to the Home/List Page (which now has the new movie)
+[x] - `Cancel` button, which should bring the user to the Home/List Page
+[x] - `Save` button, which should save these inputs in the database and bring the user to the Home/List Page (which now has the new movie)
 
 **Base functionality does not require being able to select more than one genre for a new movie**
 
@@ -100,7 +100,7 @@ The Add Movie page should have the buttons:
 
 
 ### 2. Refresh on Details Page
-Allow the app to maintain on refresh our details page.
+[x] Allow the app to maintain on refresh our details page.
 Research [React Router URL PARAMS](https://reactrouter.com/web/example/url-params) 
 
 ### 3. Edit Page (Stretch)
