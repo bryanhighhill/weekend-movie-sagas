@@ -9,66 +9,29 @@ const EditMovie = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const selectedMovie = useSelector(store => store.selectedMovie);
+    const history = useHistory();
 
     // fire off fetch movie and fetch genres get requests on page load
     useEffect(()=> {
         dispatch({
             type: 'FETCH_MOVIE_DATA', 
             payload: id
-        });
-        dispatch({
-            type: 'FETCH_GENRES',
-            payload: id
         })
     }, [id]);
-
-    const isInvalid = (title, poster, description) => {
-        if (title.length <= 0 && description.length <= 0 && poster.length <=0) {
-            alert('inputs cannot be blank')
-            return true;
-        }
-        if (title.length <= 0 || description.length <= 0 || poster.length <=0) {
-            alert('inputs cannot be blank')
-            return true;
-        }
-        if (description.length <= 0 && poster.length <=0) {
-            alert('inputs cannot be blank')
-            return true;
-        }
-        if (title.length <= 0 && poster.length <=0) {
-            alert('inputs cannot be blank')
-            return true;
-        }
-        if (title.length <= 0) {
-            alert('must enter a movie title')
-            return true;
-        }
-        if (poster.length <= 0){
-            alert('must enter a poster')
-            return true;
-        }
-        if (description.length <= 0){
-            alert('must enter a description')
-            return true;
-        }
-    }
 
     const onSubmit = (event) => {
         event.preventDefault();
         const updatedMovie = {
             title,
             description,
+            id
         }
-        if (!isInvalid(title, description)) {
-            dispatch({
-                type: 'PUT_MOVIE', 
-                payload: updatedMovie
-            });
-        setTitle(''); 
-        setDescription('');      
-        }
-        history.push('/');
-    }
+        dispatch({
+            type: 'UPDATE_MOVIE', 
+            payload: updatedMovie
+        });   
+        history.push(`/details/${id}`)
+    };
 
     return (
         <div>
@@ -88,11 +51,11 @@ const EditMovie = () => {
                             {/* collect movie title update here */}
                             <label htmlFor="title"><b>Edit Title:</b></label>
                             <br />
-                            <textarea 
+                            <input
                                 id="title" 
                                 name="title"
                                 value={title} 
-                                defaultValue={movie.title}
+                                placeholder={movie.title}
                                 onChange={(event) => setTitle(event.target.value)}
                             />
                             <br /> 
@@ -115,6 +78,21 @@ const EditMovie = () => {
                             />
                             <br />
                             <br />
+                            {/* add cancel movie button here */}
+                            <button 
+                                className="cancel-movie-button"
+                                onClick={() => {history.push(`/details/${id}`)}}
+                            >
+                                Cancel
+                            </button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            {/* add save movie button here */}
+                            <button 
+                                type="submit"
+                                className="submit-movie-button"
+                            >
+                                Update Movie
+                            </button>
                         </form>
                     </div>
                 )

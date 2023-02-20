@@ -61,3 +61,16 @@
   .movie-description {
     padding: 15px;
   }
+
+  .edit-movie-button {
+    background-color: rgb(208, 208, 208);
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+}
+
+.edit-movie-button:hover {
+    background-color: rgb(17, 18, 17);
+    color: white;
+    transition: .5s;
+}

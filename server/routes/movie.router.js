@@ -2,9 +2,23 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
+//PUT request to db to update movie at specified id
+router.put('/', (req, res) => {
+  console.log(`in PUT db with: ${req.body.title}, ${req.body.description}, ${req.body.id}`);
+  const query = 'UPDATE "movies" SET "title"=$1, "description"=$2 WHERE "id"=$3;';
+  pool.query(query, [req.body.title, req.body.description, req.body.id])
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('ERROR with PUT request: ', err);
+    })
+});
 
-  const query = `SELECT * FROM movies ORDER BY "title" ASC`;
+
+//get request for all movies in db
+router.get('/', (req, res) => {
+  const query = `SELECT * FROM "movies" ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
       res.send(result.rows);
@@ -12,9 +26,10 @@ router.get('/', (req, res) => {
     .catch(err => {
       console.log('ERROR: Get all movies', err);
       res.sendStatus(500)
-    })
+    });
 });
 
+//get request for movie at specified id in db
 router.get('/:id', (req, res) => {
   console.log('in fetch movie get request with id: ', req.params.id);
   const id = req.params.id;
@@ -29,6 +44,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
+//POST new movie to db
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
