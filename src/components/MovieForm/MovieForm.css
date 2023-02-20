@@ -25,3 +25,15 @@
     background-color: rgb(146, 254, 57);
     transition: .5s;
 }
+
+.cancel-movie-button {
+    background-color: rgb(255, 185, 114);
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+}
+
+.cancel-movie-button:hover {
+    background-color: rgb(255, 112, 9);
+    transition: .5s;
+}
