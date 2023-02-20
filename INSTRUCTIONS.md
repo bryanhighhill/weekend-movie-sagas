@@ -118,7 +118,7 @@ The edit page should have the buttons:
 
 ### Other Ideas
 
-- [ ] Display the current values in the input (title) and textarea (description) on the Edit Page
+- [x] Display the current values in the input (title) and textarea (description) on the Edit Page
 - [ ] Display all genres on movie list page. Research JSON_AGG to make this possible.
 - [ ] Move sagas and reducers out of your `index.js` and into separate files (ideally in `src/redux/reducers` and `src/redux/sagas` folders).
 - [ ] Allow the user to refresh the details or edit page. The url for the details page would be something like `/details/1` for movie with id of `1`. Research [react router params](https://reacttraining.com/react-router/web/example/url-params).

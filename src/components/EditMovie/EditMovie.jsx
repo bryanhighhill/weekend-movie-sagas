@@ -83,44 +83,38 @@ const EditMovie = () => {
                             </element>
                         </p>
                         <img src={movie.poster}/>
-                    
-                            <p>
-                                <b>current movie description:</b>
-                                <br />
-                                {movie.description}
-                            </p>
                         <form onSubmit={onSubmit}>
                             <br />
                             {/* collect movie title update here */}
                             <label htmlFor="title"><b>Edit Title:</b></label>
                             <br />
-                            <input 
+                            <textarea 
                                 id="title" 
                                 name="title"
                                 value={title} 
-                                placeholder={movie.title}
+                                defaultValue={movie.title}
                                 onChange={(event) => setTitle(event.target.value)}
                             />
                             <br /> 
                             <br />
                             {/* collect movie description update here */}
-                            <label htmlFor="description"><b>Edit Movie Description:</b> </label>
-                                <input 
-                                    id="description"
-                                    className="description-input" 
-                                    //name attribute should match html attribute
-                                    name="description"
-                                    defaultValue={description} 
-                                    placeholder={movie.description}
-                                    onChange={(event) => setDescription(event.target.value)}
-                                />
+                            <label htmlFor="description">
+                                <b>Edit Movie Description:</b>
+                            </label>
+                            <textarea
+                            // <input 
+                                id="description"
+                                type="textarea"
+                                className="description-input" 
+                                name="description"
+                                defaultValue={movie.description}
+                                rows={9}
+                                
+                                wrap="soft"
+                                onChange={(event) => setDescription(event.target.value)}
+                            />
                             <br />
                             <br />
-                            <div className="new-description-div">
-                                <b>New Movie Description:</b> 
-                                <br />
-                                {description}
-                            </div>
                         </form>
                     </div>
                 )

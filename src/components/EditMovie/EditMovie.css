@@ -1,5 +1,6 @@
 body {
     color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .edit-movie-div {
@@ -21,8 +22,5 @@ body {
     width: 100%;
     border: 2px solid #ccc;
     border-radius: 4px;
-    background-color: #f8f8f8;
-    resize: none;
-    word-wrap: break-word;
-    word-break: break-all;
+    overflow-wrap: normal;
 }
