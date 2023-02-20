@@ -4,11 +4,11 @@ import { useHistory, useParams } from 'react-router-dom';
 import './EditMovie.css';
 
 const EditMovie = () => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
     const { id } = useParams();
     const dispatch = useDispatch();
     const selectedMovie = useSelector(store => store.selectedMovie);
+    const [title, setTitle] = useState(selectedMovie.title);
+    const [description, setDescription] = useState(selectedMovie.description);
     const history = useHistory();
 
     // fire off fetch movie and fetch genres get requests on page load
@@ -19,25 +19,49 @@ const EditMovie = () => {
         })
     }, [id]);
 
+    const isInvalid = (title, description) => {
+        if (title.length <= 0) {
+            alert('title cannot be blank')
+            return true;
+        }
+        if (description.length <=0) {
+            alert('description cannot be blank')
+            return true;
+        }
+        if (title.length <= 0 && description.length) {
+            alert('inputs cannot be blank')
+            return true;
+        }
+    }
+
     const onSubmit = (event) => {
         event.preventDefault();
+
         const updatedMovie = {
             title,
             description,
             id
         }
-        dispatch({
-            type: 'UPDATE_MOVIE', 
-            payload: updatedMovie
-        });   
-        history.push(`/details/${id}`)
+        if (!isInvalid(title, description)) {
+            dispatch({
+                type: 'UPDATE_MOVIE', 
+                payload: updatedMovie
+            });
+            history.push(`/details/${id}`)
+        }   
     };
 
     return (
         <div>
             {selectedMovie.map(movie => {
+                useEffect(()=> {
+                    setTitle(movie.title);
+                    setDescription(movie.description);
+                }, [id]);
+
                 return (
                     <div className="edit-movie-div">
+                        
                         <br />
                         <p>editing details for:
                             <br />
