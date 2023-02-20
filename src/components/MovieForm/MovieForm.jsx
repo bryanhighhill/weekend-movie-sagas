@@ -110,7 +110,7 @@ const MovieForm = () => {
                         //name attribute should match html attribute
                         name="description"
                         value={description} 
-                        placeholder="description link"
+                        placeholder="description"
                         onChange={(event) => setDescription(event.target.value)}
                     /> 
                     &nbsp; &nbsp; &nbsp; &nbsp;

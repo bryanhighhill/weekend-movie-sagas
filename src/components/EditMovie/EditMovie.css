@@ -1,0 +1,28 @@
+body {
+    color: white;
+}
+
+.edit-movie-div {
+    background-color: white;
+    color: black;
+    padding: 30px;
+    background-color: rgb(254, 255, 255);
+    margin: auto;
+    border-radius: 20px;
+    padding: 25px;
+    width: 80%;
+}
+
+.movie-title {
+    font-size: 25px;
+}
+
+.description-input {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    word-wrap: break-word;
+    word-break: break-all;
+}

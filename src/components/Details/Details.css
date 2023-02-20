@@ -9,6 +9,7 @@
 
 .movie-info-container {
     display: grid;
+    color: black;
     grid-template-columns: repeat(2, 1fr);
     padding: 30px;
     background-color: rgb(254, 255, 255);
