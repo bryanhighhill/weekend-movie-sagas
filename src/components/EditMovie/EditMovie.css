@@ -25,3 +25,6 @@ body {
     overflow-wrap: normal;
 }
 
+.movie-poster {
+    width: 50%;
+}

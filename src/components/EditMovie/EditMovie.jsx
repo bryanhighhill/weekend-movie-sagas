@@ -69,7 +69,10 @@ const EditMovie = () => {
                                 <b>{movie.title}</b>
                             </element>
                         </p>
-                        <img src={movie.poster}/>
+                        <img 
+                            src={movie.poster}
+                            className="movie-poster"
+                        />
                         <form onSubmit={onSubmit}>
                             <br />
                             {/* collect movie title update here */}

@@ -25,9 +25,25 @@ Weekend Movie Sagas
             I then am using the .map() function to display this movies data.
             At the bottom of the page is a button that returns the used to the Carousel page so they can view other movies. 
 
+    ## STRETCH GOALS
+        - Add Movie Form
+            On the movie carousel I added a button, when clicked, drops down an option for a user to add a movie to the db. By clicking the button,
+            it changes the visibility of the form to whatever the current state isn't. Essentially, it is a toggle switch. The form takes in 4 pieces of information: Movie Title, a link to an image of the movie poster, a description of the movie, and a dropdown option for movie genre. Once the user has entered this information, they can click "Save Movie" which sends a POST request to the db with the entered data. After the post request has been made successfully, a GET request is fired off so that the carousel is now updated with the newly added movie.
+            If a user leaves one of the inputs empty, they will get an error that inputs cannot be blank, so that a post request can't be made with missing data.
+            Clicking the "cancel" button on the movie form also toggles the form so that it is no longer visible, just showing the carousel again.
+
+        - Refresh on Details Page
+            When a user refreshes the browser on the details page of a specific movie, they are brought back to the same details page instead of showing a blank page. To accomplish this, I included the movie id in history.push to the details page from the movie carousel. Using .useParams, I was able to grab that id from the url and dispatch it on pageload as a payload to both 'FETCH_MOVIE_DATA' which runs a GET request to db for details on that specified movie, as well as to 'FETCH_GENRES' which grabs the genres associated with that movie on the db. Because the id is included in the url, whenever the page is refreshed it grabs that id and runs the dispatches each time.
+
+        - Edit Page
+            To edit page, I created an additional component called EditMovie. When the edit button is clicked from the details page, I used history.push with the movie id to the edit page. Again on page load, I 'FETCH_MOVIE_DATA' with the id as a payload in order to get details on the specified movie. useSelector is used to grab that data from the store, which is then displayed on the dom via .map function. Two inputs are provided, one allowing the user to edit the movie title, and the second allowing the user to edit the movie description. DefaultValues are applied to both fields, containing the current values in the db. This is so that a user can truly edit the content instead of having to rewrite it all from scratch. It also prevents no data from being entered and sent to the db as empty data. When the Update Movie button is clicked, a PUT request is made to the db with the edited movie data and the user is brought back to the movie details page.    
+
 # Duration
     Base Mode:
     - Approx 25 hrs - a lot of which was styling
+
+    Streth:
+    - Approx 20 hrs
 
 # Prerequisites
     - axios

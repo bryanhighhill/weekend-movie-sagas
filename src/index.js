@@ -38,7 +38,7 @@ const updateMovie = (action) => {
     })
     .then((response) => {
         console.log('response from updateMovie: ', response);
-        fetchAllMovies();
+        // fetchMovieData(action.payload);
     })
     .catch((error) => {
         console.log('error with updateMovie: ', error);
@@ -64,15 +64,12 @@ const postMovie = (action) => {
     })
     .then((response) => {
       console.log('response from postMovie: ', response);
+      fetchAllMovies();
     })
     .catch((error) => {
       console.log('error with postMovie: ', error);
     })
   }
-
-  //POST genre
-
-
 
 // get all movies from db
 function* fetchAllMovies() {
